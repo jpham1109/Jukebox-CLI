@@ -1,26 +1,42 @@
 # THIS SEED FILE NEEDS TO BE ENTIRELY REPLACED -- I'M LEAVING CODE FOR YOUR REFERENCE ONLY!
 
-User.destroy_all
-Artist.destroy_all
-Genre.destroy_all
-Album.destroy_all
-Song.destroy_all
-Favorite.destroy_all
-User.reset_pk_sequence
-Artist.reset_pk_sequence
-Genre.reset_pk_sequence
-Album.reset_pk_sequence
-Song.reset_pk_sequence
-Favorite.reset_pk_sequence
+# User.destroy_all
+# Artist.destroy_all
+# Genre.destroy_all
+# Album.destroy_all
+# Song.destroy_all
+# Favorite.destroy_all
+# User.reset_pk_sequence
+# Artist.reset_pk_sequence
+# Genre.reset_pk_sequence
+# Album.reset_pk_sequence
+# Song.reset_pk_sequence
+# Favorite.reset_pk_sequence
 
 
 ########### different ways to write your seeds ############
 
 # 1: save everything to variables (makes it easy to connect models, best for when you want to be intentional about your seeds)
 
-basil = Plant.create(name: "basil the herb", bought: 20200610, color: "green")
-sylwia = Person.create(name: "Sylwia", free_time: "none", age: 30)
-pp1 = PlantParenthood.create(plant_id: basil.id, person_id: sylwia.id, affection: 1_000_000, favorite?: true)
+
+
+
+#songs
+love_story = Song.create(name: "Love Story")
+
+#artists
+taylor_swift = Artist.create(name: "Taylor Swift")
+
+#genres
+country = Genre.create(name: "Country")
+
+
+Favorite.create()
+
+
+# basil = Plant.create(name: "basil the herb", bought: 20200610, color: "green")
+# sylwia = Person.create(name: "Sylwia", free_time: "none", age: 30)
+# pp1 = PlantParenthood.create(plant_id: basil.id, person_id: sylwia.id, affection: 1_000_000, favorite?: true)
 
 # # 2. Mass create -- in order to connect them later IN SEEDS (not through the app) you'll need to find their id
 # ## a. by passing an array of hashes:
@@ -77,4 +93,4 @@ pp1 = PlantParenthood.create(plant_id: basil.id, person_id: sylwia.id, affection
 # Plant.update(category_id: indoor.id)
 
 
-# puts "🔥 🔥 🔥 🔥 "
+ puts "🔥 🔥 seeded 🔥 🔥 "

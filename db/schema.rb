@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_02_17_030832) do
 
-  create_table "albums", force: :cascade do |t|
-    t.integer "artist_id"
-    t.string "name"
-    t.integer "year"
-  end
-
   create_table "artists", force: :cascade do |t|
     t.string "name"
   end
@@ -35,9 +29,10 @@ ActiveRecord::Schema.define(version: 2021_02_17_030832) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.integer "album_id"
+    t.integer "artist_id"
     t.string "length"
     t.integer "genre_id"
+    t.integer "year"
   end
 
   create_table "users", force: :cascade do |t|
