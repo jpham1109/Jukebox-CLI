@@ -1,11 +1,18 @@
 # THIS SEED FILE NEEDS TO BE ENTIRELY REPLACED -- I'M LEAVING CODE FOR YOUR REFERENCE ONLY!
 
-Plant.destroy_all
-Person.destroy_all
-PlantParenthood.destroy_all
-Plant.reset_pk_sequence
-Person.reset_pk_sequence
-PlantParenthood.reset_pk_sequence
+User.destroy_all
+Artist.destroy_all
+Genre.destroy_all
+Album.destroy_all
+Song.destroy_all
+Favorite.destroy_all
+User.reset_pk_sequence
+Artist.reset_pk_sequence
+Genre.reset_pk_sequence
+Album.reset_pk_sequence
+Song.reset_pk_sequence
+Favorite.reset_pk_sequence
+
 
 ########### different ways to write your seeds ############
 
