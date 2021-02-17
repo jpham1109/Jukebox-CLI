@@ -90,8 +90,8 @@ class Jukebox
   def genres_helper
     system 'clear'
     genre = Genre.all_genres
-      genre_id = prompt.select("Which Genre would you like?", genre)
-    genre_selection = user.create_selection_by_genre(genre_id)
+    genre_name = prompt.select("Which Genre would you like?", genre)
+    Genre.all_songs_by_genre(genre_name)
       # prompt.select(song_collection) do |options|
       #   option.choice "Enter Song ID", -> ()
       #   option.choice "Choose a different genre", -> (genres_helper)
@@ -99,7 +99,7 @@ class Jukebox
   end 
 
   def see_all_songs_for_genre
-    
+
   end
 
   def artists_helper

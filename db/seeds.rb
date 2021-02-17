@@ -18,20 +18,31 @@
 
 # 1: save everything to variables (makes it easy to connect models, best for when you want to be intentional about your seeds)
 
-
-
-
-#songs
-love_story = Song.create(name: "Love Story")
+#users
+bleak = User.create(name: "codingcat", password: "cat")
+jamie = User.create(name: "ninjacat", password: "911")
 
 #artists
-taylor_swift = Artist.create(name: "Taylor Swift")
+taylor = Artist.create(name: "Taylor Swift")
+red_hot = Artist.create(name: "Red Hot Chili Peppers")
+daft = Artist.create(name: "Daft Punk")
 
 #genres
 country = Genre.create(name: "Country")
+alt = Genre.create(name: "Alternative")
+elec = Genre.create(name: "Electronic")
+
+#songs
+love_story = Song.create(name: "Love Story", artist_id: taylor.id, length: "3:56", genre_id: country.id, year: 2008)
+californication = Song.create(name: "Californication", artist_id: red_hot.id, length: "5:30", genre_id: alt.id, year: 1999)
+harder = Song.create(name: "Harder, Better, Faster, Stronger", artist_id: daft.id, length: "3:45", genre_id: elec.id, year: 2001)
 
 
-Favorite.create()
+
+
+
+
+
 
 
 # basil = Plant.create(name: "basil the herb", bought: 20200610, color: "green")
