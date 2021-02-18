@@ -12,9 +12,13 @@ class User < ActiveRecord::Base
 
     end
 
-    def play_song(song_id)
-
+    def play_song
+    
     end
+
+  
+
+
 end
 
 
