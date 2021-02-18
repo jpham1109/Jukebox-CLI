@@ -95,10 +95,12 @@ class Jukebox
 
   def genres_helper
     system 'clear'
-    genre = Genre.all_genres
-    genre_name = prompt.select("Which Genre would you like?", genre)
-    binding.pry
-    user.all_songs_by_genre(genre_name)
+    chosen_genre = prompt.select("Which Genre would you like?", Genre.all_genres)
+    songs_by_genre = Song.all.where(genre_id: chosen_genre)
+    songs = songs_by_genre.map{|song| {song.name => song.id}}
+    chosen_song = prompt.select("Which song would you like?", songs) 
+
+    
       # prompt.select(song_collection) do |options|
       #   option.choice "Enter Song ID", -> ()
       #   option.choice "Choose a different genre", -> (genres_helper)

@@ -12,7 +12,7 @@ gem "faker"
 
 gem "colorize"
 gem "tty-prompt"
+gem 'launchy', '~> 2.4', '>= 2.4.3'
+# gem 'rspotify'
 
-gem 'rspotify'
-
-gem 'dotenv'
+# gem 'dotenv'

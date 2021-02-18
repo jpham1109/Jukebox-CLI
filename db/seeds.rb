@@ -37,9 +37,7 @@ vince = Artist.create(name: "Vince Staples")
 breaking = Artist.create(name: "Breaking Benjamin")
 
 #genres
-country = Genre.create(name: "Country")
-alt = Genre.create(name: "Alternative")
-elec = Genre.create(name: "Electronic")
+
 country = Genre.create(name: "Country")
 alt = Genre.create(name: "Alternative")
 elec = Genre.create(name: "Electronic")
