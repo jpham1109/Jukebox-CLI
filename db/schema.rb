@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_02_17_030832) do
     t.string "length"
     t.integer "genre_id"
     t.integer "year"
+    t.string "url"
   end
 
   create_table "users", force: :cascade do |t|

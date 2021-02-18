@@ -6,6 +6,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :length
       t.integer :genre_id
       t.integer :year
+      t.string :url
     end 
   end
 end
