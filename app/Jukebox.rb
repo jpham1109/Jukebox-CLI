@@ -3,7 +3,6 @@ class Jukebox
   attr_accessor :user, :password
   
   def initialize
-    #config this out later
     @prompt = TTY::Prompt.new
   end
   
@@ -33,7 +32,7 @@ class Jukebox
     ░░░██║░░░███████║█████╗░░  ░░░░░██║██║░░░██║█████═╝░█████╗░░██████╦╝██║░░██║░╚███╔╝░
     ░░░██║░░░██╔══██║██╔══╝░░  ██╗░░██║██║░░░██║██╔═██╗░██╔══╝░░██╔══██╗██║░░██║░██╔██╗░
     ░░░██║░░░██║░░██║███████╗  ╚█████╔╝╚██████╔╝██║░╚██╗███████╗██████╦╝╚█████╔╝██╔╝╚██╗
-    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚════╝░╚═╝░░╚═╝                                      
+    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚════╝░╚═╝░░╚═╝
     ".colorize(:magenta)
   end
   
@@ -67,10 +66,9 @@ class Jukebox
   def main_menu_welcome_back
     system 'clear'
     puts "Welcome back, #{user.name}!"
-    #banner?
     prompt.select("Browse or view list") do |menu|
       menu.choice "Browse categories", -> {categories_helper}
-      menu.choice "View favorites", -> {favorites_helper}
+      menu.choice "View favorites", -> {favorites_helper(user)}
       menu.choice "Exit", -> {exit_helper}
     end
   end
@@ -78,7 +76,6 @@ class Jukebox
   def main_menu_new_user
     system 'clear'
     puts "Welcome, #{user.name}!"
-    #banner?
     prompt.select("Browse or view list") do |menu|
       menu.choice "Browse categories", -> {categories_helper}
       menu.choice "Delete user", -> {delete_user}
@@ -125,11 +122,6 @@ class Jukebox
 
   def artists_helper
     system 'clear'
-    chosen_artist = prompt.select("Which artist would you like?", Artist.all_artists)
-    songs_by_artist = Song.all.where(artist_id: chosen_artist)
-    songs = songs_by_artist.map{|song| {song.name => song.id}}
-    chosen_song = prompt.select("Which song would you like?", songs) 
-    system 'clear'
     artists = Artist.all_artists
     chosen_artist = prompt.select("Which artist would you like?", artists) 
     prompt.select("Would you like to..") do |menu|
@@ -157,6 +149,13 @@ class Jukebox
   def songs_helper
     system 'clear'
     chosen_song = prompt.select("Which song would you like?", Song.all_songs)
+    prompt.select("Would you like to..") do |menu|
+      menu.choice "Play song", -> {play_song(chosen_song)}
+      menu.choice "Add to favorites", -> {add_favorite(user.id, chosen_song)}
+      menu.choice "Go back", -> {genres_helper}
+      menu.choice "Categories", -> {categories_helper}
+      menu.choice "Exit", -> {exit_helper}
+    end
   end 
 
   def play_song_by_genre(chosen_song, chosen_genre)
@@ -171,11 +170,28 @@ class Jukebox
     songs_by_artist(chosen_artist)
   end
 
+  def play_song(chosen_song)
+  url = Song.find(chosen_song).url
+  Launchy.open "#{url}"
+   songs_helper
+  end
+
   def add_favorite(user_id, song_id)
     Favorite.create(user_id: user_id, song_id: song_id)
     puts "Added to favorites!"
       sleep(1)
       categories_helper
+  end 
+
+  def favorites_helper(user)
+    user_id = user.id
+    binding.pry
+    puts "Here are your favorites:"
+    favorites = Favorite.all.where(user_id: user_id)
+    prompt.select("Choose an option") do |menu|
+      menu.choice "Go back", -> {main_menu_welcome_back}
+      menu.choice "Exit", -> {exit_helper}
+    end
   end 
 
   def delete_user
@@ -185,7 +201,6 @@ class Jukebox
     sleep(2)
     welcome
   end
- 
 
   def exit_helper
     puts "See you next time!"
