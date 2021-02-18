@@ -28,12 +28,19 @@ class Jukebox
 
   def banner
     puts "
-    ████████ ██   ██ ███████          ██ ██    ██ ██   ██ ███████ ██████   ██████  ██   ██ 
-       ██    ██   ██ ██               ██ ██    ██ ██  ██  ██      ██   ██ ██    ██  ██ ██  
-       ██    ███████ █████            ██ ██    ██ █████   █████   ██████  ██    ██   ███   
-       ██    ██   ██ ██          ██   ██ ██    ██ ██  ██  ██      ██   ██ ██    ██  ██ ██  
-       ██    ██   ██ ███████      █████   ██████  ██   ██ ███████ ██████   ██████  ██   ██                                                                                                  
+    ████████╗██╗░░██╗███████╗  ░░░░░██╗██╗░░░██╗██╗░░██╗███████╗██████╗░░█████╗░██╗░░██╗
+    ╚══██╔══╝██║░░██║██╔════╝  ░░░░░██║██║░░░██║██║░██╔╝██╔════╝██╔══██╗██╔══██╗╚██╗██╔╝
+    ░░░██║░░░███████║█████╗░░  ░░░░░██║██║░░░██║█████═╝░█████╗░░██████╦╝██║░░██║░╚███╔╝░
+    ░░░██║░░░██╔══██║██╔══╝░░  ██╗░░██║██║░░░██║██╔═██╗░██╔══╝░░██╔══██╗██║░░██║░██╔██╗░
+    ░░░██║░░░██║░░██║███████╗  ╚█████╔╝╚██████╔╝██║░╚██╗███████╗██████╦╝╚█████╔╝██╔╝╚██╗
+    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚════╝░╚═╝░░╚═╝                                                                                          
     ".colorize(:magenta)
+
+    # ████████ ██   ██ ███████          ██ ██    ██ ██   ██ ███████ ██████   ██████  ██   ██ 
+    #    ██    ██   ██ ██               ██ ██    ██ ██  ██  ██      ██   ██ ██    ██  ██ ██  
+    #    ██    ███████ █████            ██ ██    ██ █████   █████   ██████  ██    ██   ███   
+    #    ██    ██   ██ ██          ██   ██ ██    ██ ██  ██  ██      ██   ██ ██    ██  ██ ██  
+    #    ██    ██   ██ ███████      █████   ██████  ██   ██ ███████ ██████   ██████  ██   ██
   end
   
   def sign_in_helper
@@ -43,21 +50,23 @@ class Jukebox
       puts "Welcome back #{user.name}!"
       main_menu_welcome_back
     else
-      puts "username not found"
+      puts "Username not found. Please created a username."
+      sleep(2)
       sign_up_helper
     end
   end 
 
   def sign_up_helper
     system 'clear'
-    name = prompt.ask("What would you like your username to be?")
+    name = prompt.ask("Please enter a username:")
     while User.find_by(name: name)
       puts "This username already exists. Please enter a new username."
       sleep(2)
       sign_up_helper
     end
-    password = prompt.ask("Enter a password:")
+    password = prompt.ask("Please enter a password:")
     self.user = User.create(name: name, password: password)
+    sleep(0.5)
     main_menu_new_user
   end 
 
@@ -89,7 +98,7 @@ class Jukebox
       option.choice "Artists", -> {artists_helper}
       option.choice "Albums", -> {albums_helper}
       option.choice "Songs", -> {songs_helper}
-      option.choice "Main menu", -> {main_menu}
+      option.choice "Main menu", -> {main_menu_welcome_back}
     end
   end 
 
