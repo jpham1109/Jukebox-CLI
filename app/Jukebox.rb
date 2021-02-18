@@ -50,7 +50,7 @@ class Jukebox
       puts "Welcome back #{user.name}!"
       main_menu_welcome_back
     else
-      puts "Username not found. Please created a username."
+      puts "Username not found. Please create a username."
       sleep(2)
       sign_up_helper
     end
