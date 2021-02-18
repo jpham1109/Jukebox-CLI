@@ -104,12 +104,11 @@ class Jukebox
 
   def genres_helper
     system 'clear'
-    chosen_genre = prompt.select("Which Genre would you like?", Genre.all_genres)
+    chosen_genre = prompt.select("Which genre would you like?", Genre.all_genres)
     songs_by_genre = Song.all.where(genre_id: chosen_genre)
     songs = songs_by_genre.map{|song| {song.name => song.id}}
     chosen_song = prompt.select("Which song would you like?", songs) 
 
-    
       # prompt.select(song_collection) do |options|
       #   option.choice "Enter Song ID", -> ()
       #   option.choice "Choose a different genre", -> (genres_helper)
@@ -118,9 +117,10 @@ class Jukebox
 
   def artists_helper
     system 'clear'
-    artist = Artist.all_artists
-      artist_id = prompt.select("Which Artist would you like?", artist)
-    artist_selection = user.create_selection_by_artist(artist_id)
+    chosen_artist = prompt.select("Which artist would you like?", Artist.all_artists)
+    songs_by_artist = Song.all.where(artist_id: chosen_artist)
+    songs = songs_by_artist.map{|song| {song.name => song.id}}
+    chosen_song = prompt.select("Which song would you like?", songs) 
     # prompt.select(song_collection) do |options|
     #   option.choice "Enter Song ID", -> ()
     #   option.choice "Choose a different artist", -> (artists_helper)
@@ -129,8 +129,7 @@ class Jukebox
 
   def songs_helper
     system 'clear'
-    song = Song.all_songs
-      song_id = prompt.select("Which Song would you like?", song)
+    chosen_song = prompt.select("Which song would you like?", Song.all_songs)
       # option.choice "Enter Song ID", -> ()
       # option.choice "Exit", -> (exit_helper)
   end 
