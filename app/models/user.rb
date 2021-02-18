@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
     
     end
 
-  
+    # def view_favorites
+    #     Favorite.all.select{|favorite| favorite.user_id == user.id}
+    # end
 
 
 end

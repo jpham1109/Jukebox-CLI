@@ -1,6 +1,6 @@
 class Jukebox
   attr_reader :prompt
-  attr_accessor :user, :password
+  attr_accessor :user, :password, :song
   
   def initialize
     #config this out later
@@ -33,7 +33,7 @@ class Jukebox
     ░░░██║░░░███████║█████╗░░  ░░░░░██║██║░░░██║█████═╝░█████╗░░██████╦╝██║░░██║░╚███╔╝░
     ░░░██║░░░██╔══██║██╔══╝░░  ██╗░░██║██║░░░██║██╔═██╗░██╔══╝░░██╔══██╗██║░░██║░██╔██╗░
     ░░░██║░░░██║░░██║███████╗  ╚█████╔╝╚██████╔╝██║░╚██╗███████╗██████╦╝╚█████╔╝██╔╝╚██╗
-    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚════╝░╚═╝░░╚═╝                                                 
+    ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝  ░╚════╝░░╚═════╝░╚═╝░░╚═╝╚══════╝╚═════╝░░╚════╝░╚═╝░░╚═╝                                      
     ".colorize(:magenta)
   end
   
@@ -101,11 +101,25 @@ class Jukebox
     chosen_genre = prompt.select("Which genre would you like?", Genre.all_genres)
     songs_by_genre = Song.all.where(genre_id: chosen_genre)
     songs = songs_by_genre.map{|song| {song.name => song.id}}
-    chosen_song = prompt.select("Which song would you like?", songs)
-    prompt.select("Please select an option") do |option|
-      option.choice "Browse categories", -> {categories_helper}
-      option.choice "View favorites", -> {favorites_helper}
-      option.choice "Exit", -> {exit_helper}
+
+
+    chosen_song = prompt.select("Which song would you like?", songs)    #break out into its own method, so that we can call this method again after adding to favorites
+    puts song = Song.find(chosen_song).to_s
+    option = prompt.select("Please select an option") do |option|
+      option.choice "Add to favorites"
+      option.choice "Exit"
+    end
+
+    if option == "Add to favorites"
+      add_favorite(user.id, chosen_song)
+      puts "Added to favorites!"
+      sleep(1)
+      categories_helper
+    end
+
+    if option == "Exit"
+      exit_helper
+    end
   end 
 
   def artists_helper
@@ -121,14 +135,22 @@ class Jukebox
     chosen_song = prompt.select("Which song would you like?", Song.all_songs)
   end 
 
-  def view_favorites
-    Favorite.all.select{|favorite| favorite.user_id == user.id}
-  end
+  # def play_song
+  #   puts "#{Song.find()}"
+  # end
+
+  def add_favorite(user_id, song_id)
+    Favorite.create(user_id: user_id, song_id: song_id)
+    # puts Favorite.all
+  end 
+
+ 
 
   def exit_helper
     puts "See you next time!"
     sleep(2)
     system 'clear'
     exit
-  end
+     end
 end
+
