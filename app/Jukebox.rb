@@ -108,11 +108,7 @@ class Jukebox
     songs_by_genre = Song.all.where(genre_id: chosen_genre)
     songs = songs_by_genre.map{|song| {song.name => song.id}}
     chosen_song = prompt.select("Which song would you like?", songs) 
-
-      # prompt.select(song_collection) do |options|
-      #   option.choice "Enter Song ID", -> ()
-      #   option.choice "Choose a different genre", -> (genres_helper)
-      #   option.choice "Exit" -> (exit_helper)
+    puts song = Song.find(chosen_song).to_s
   end 
 
   def artists_helper
@@ -132,6 +128,14 @@ class Jukebox
     chosen_song = prompt.select("Which song would you like?", Song.all_songs)
       # option.choice "Enter Song ID", -> ()
       # option.choice "Exit", -> (exit_helper)
+  end 
+
+  # def play_song
+  #   puts "#{Song.find()}"
+  # end
+
+  def add_favorite
+    Favorite.create(user_id: user.id, song_id: chosen_song)
   end 
 
   def view_favorites
