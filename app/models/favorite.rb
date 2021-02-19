@@ -6,9 +6,14 @@ class Favorite < ActiveRecord::Base
         self.name 
     end
 
-    def self.all_songs
-        self.all.map{|song| {song.name => song.id}}  
-    end
+    # def all_songs
+    #     self.all.map{|favorite| {favorite.song.name => favorite.id}}
+    # end
+    
+    # def all_song_by_user
+    #     self.all.select{|favorite| favorite.user_id == user.id}
+    # end
+
 
 
 end

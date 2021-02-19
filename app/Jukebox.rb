@@ -177,24 +177,47 @@ class Jukebox
   end
 
   def add_favorite(user_id, song_id)
+    if Favorite.find_by(user_id: user_id, song_id: song_id)
+      puts "This song is already in your favorites"
+    else
     Favorite.create(user_id: user_id, song_id: song_id)
     puts "Added to favorites!"
       sleep(1)
-      categories_helper
+      favorites_helper(user)
   end 
 
   def favorites_helper(user)
-    user_id = user.id
-    binding.pry
+    system 'clear'
+    user_favorites = Favorite.where(user_id: user.id)
+    user_favorites.map{|favorite| {favorite.song.name => favorite.id}}
     puts "Here are your favorites:"
-    favorites = Favorite.all.where(user_id: user_id)
+    puts user_favorites.map{|favorite| {favorite.song.name => favorite.id}}
+    # binding.pry
     prompt.select("Choose an option") do |menu|
+      menu.choice "Remove a song", -> {remove_a_favorite(user, favorites )}
+      menu.choice "Delete all favorite", -> {delete_all_favorites(user, favorites)}
       menu.choice "Go back", -> {main_menu_welcome_back}
       menu.choice "Exit", -> {exit_helper}
     end
   end 
 
+  def remove_a_favorite(user, favorites)
+    system 'clear'
+    chosen_favorite = prompt.select("Select a song to remove from favorites", favorites)
+    favorites.delete(chosen_favorite)
+    favorites.reload
+    puts "Now you're favorites are #{favorites}"
+    favorites_helper(user)
+  end
+
+  def delete_all_favorites(user, favorites)
+    system 'clear'
+    favorites.clear
+    favorites_helper(user)
+  end 
+
   def delete_user
+    system 'clear'
     current_user = User.find(self.user.id)
     current_user.delete
     puts "User deleted."
@@ -203,6 +226,7 @@ class Jukebox
   end
 
   def exit_helper
+    system 'clear'
     puts "See you next time!"
     sleep(2)
     system 'clear'

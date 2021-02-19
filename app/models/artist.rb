@@ -6,7 +6,7 @@ class Artist < ActiveRecord::Base
         # self.songs.name 
     end
 
-    # def self.all_favorites
-    #     self.all.map{|artist| {artist.name => artist.id}}  
-    # end
+    def self.all_artists
+        self.all.map{|artist| {artist.name => artist.id}}  
+    end
 end
