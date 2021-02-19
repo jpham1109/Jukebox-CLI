@@ -6,9 +6,7 @@ class Favorite < ActiveRecord::Base
         self.name 
     end
 
-    def self.all_songs
-        self.all.map{|song| {song.name => song.id}}  
+    def self.all_favorites
+        self.all.map{|song| song.song_id}  
     end
-
-
 end

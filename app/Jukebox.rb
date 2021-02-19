@@ -185,9 +185,10 @@ class Jukebox
 
   def favorites_helper(user)
     user_id = user.id
-    binding.pry
     puts "Here are your favorites:"
     favorites = Favorite.all.where(user_id: user_id)
+    songs = favorites.map{|song| {song.song_id => user_id}}.uniq
+    fav_song_list = prompt.select("Please see your songs below:", songs)
     prompt.select("Choose an option") do |menu|
       menu.choice "Go back", -> {main_menu_welcome_back}
       menu.choice "Exit", -> {exit_helper}
