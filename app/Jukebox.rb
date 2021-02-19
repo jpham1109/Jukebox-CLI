@@ -10,7 +10,7 @@ class Jukebox
       welcome
   end
 
-  def jukebox_music 
+  def menu_music 
     pid = fork{exec 'afplay', "jukebox_song.mp3"}
   end
   
@@ -20,7 +20,7 @@ class Jukebox
     sleep(1)
     puts "Welcome to...".colorize(:magenta)
     sleep(1)
-    jukebox_music
+    menu_music
     banner
     sleep(1)
     prompt.select("Sign in or Sign up") do |menu|
@@ -43,14 +43,15 @@ class Jukebox
   
   def sign_in_helper
     system 'clear'
-    name = prompt.ask("Enter your username:")
-    if self.user = User.find_by(name: name)
+    name = prompt.ask("Enter your Username:")
+    password = prompt.mask("Enter Password:")
+    if self.user = User.find_by(name: name, password: password)
       puts "Welcome back #{user.name}!"
       main_menu_welcome_back
     else
-      puts "Username not found. Please create a username."
+      puts "Incorrect Username or Password 🧐"
       sleep(2)
-      sign_up_helper
+      sign_in_helper
     end
   end 
 
@@ -62,7 +63,7 @@ class Jukebox
       sleep(2)
       sign_up_helper
     end
-    password = prompt.ask("Please enter a password:")
+    password = prompt.mask("Please enter a password:")
     self.user = User.create(name: name, password: password)
     sleep(0.5)
     main_menu_new_user
@@ -74,6 +75,8 @@ class Jukebox
     prompt.select("Browse or view list") do |menu|
       menu.choice "Browse categories", -> {categories_helper}
       menu.choice "View favorites", -> {favorites_helper(user)}
+      menu.choice "Change password", -> {change_password}
+      menu.choice "Delete user", -> {delete_user}
       menu.choice "Exit", -> {exit_helper}
     end
   end
@@ -83,6 +86,7 @@ class Jukebox
     puts "Welcome, #{user.name}!"
     prompt.select("Browse or view list") do |menu|
       menu.choice "Browse categories", -> {categories_helper}
+      menu.choice "Change password", -> {change password}
       menu.choice "Delete user", -> {delete_user}
       menu.choice "Exit", -> {exit_helper}
     end
@@ -223,6 +227,18 @@ class Jukebox
   def delete_all_favorites(user_favorites)
     system 'clear'
     user_favorites.destroy_all
+  end 
+
+  def change_password
+    system 'clear'
+    current_password = prompt.mask("Please enter your current password:")
+    new_password = prompt.mask("Please enter your new password:")
+    user.update(password: new_password)
+    prompt.select("You have successfully changed your password 😊. Would you like to..?") do |menu|
+      menu.choice "Sign in again", -> {sign_in_helper}
+      menu.choice "Main menu", -> {main_menu_welcome_back}
+      menu.choice "Browse music to play", -> {categories_helper}
+    end
   end 
 
   def delete_user
