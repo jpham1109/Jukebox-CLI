@@ -47,7 +47,6 @@ jewels = Artist.create(name: "Run The Jewels")
 queen = Artist.create(name: "Queen")
 
 #genres
-
 country = Genre.create(name: "Country")
 alt = Genre.create(name: "Alternative")
 elec = Genre.create(name: "Electronic")
@@ -95,6 +94,38 @@ things = Song.create(name: "All The Small Things", artist_id: blink.id, length: 
 sza = Song.create(name: "Good Days", artist_id: sza.id, length: "4:39", genre_id: r_b.id, year: 2020, url: "https://open.spotify.com/track/3YJJjQPAbDT7mGpX3WtQ9A?si=2QeFVFhUSFGVbBxqUO60PQ")
 count = Song.create(name: "Close Your Eyes (And Count To ****)", artist_id: jewels.id, length: "3:54", genre_id: rap.id, year: 2014, url: "https://open.spotify.com/track/2Kn3xgaDCM4aHuHK7FApgC?si=X_Q6SFLgRya6YUMlJTUWDg")
 rock_you = Song.create(name: "We Will Rock You", artist_id: queen.id, length: "2:02", genre_id: rock.id, year: 1981, url: "https://open.spotify.com/track/54flyrjcdnQdco7300avMJ?si=yvwsXv-2ScGGHL374VGKwQ")
+otherside = Song.create(name: "Otherside", artist_id: red_hot.id, length: "4:15", genre_id: alt.id, year: 1999, url: "https://open.spotify.com/track/64BbK9SFKH2jk86U3dGj2P?si=aF-wC3JxSKaABwYPvJGyew")
+time = Song.create(name: "One More Time", artist_id: daft.id, length: "3:41", genre_id: elec.id, year: 2001, url: "https://open.spotify.com/track/0DiWol3AO6WpXZgp0goxAV?si=6g3poDaRQvaedZzd_08beQ")
+passionfruit = Song.create(name: "Passionfruit", artist_id: yaeji.id, length: "4:35", genre_id: elec.id, year: 2017, url: "https://open.spotify.com/track/1OStEtFJJ7xMbgQfp5C3j9?si=XbogW_iWQ_-SKfiM4eoPcw")
+pastoral = Song.create(name: "Pastoral", artist_id: loffler.id, length: "3:41", genre_id: elec.id, year: 2020, url: "https://open.spotify.com/track/6XmY3xNVGemozNMApOCobZ?si=HLK2xLPuQGGbKCmg6xCu9Q")
+fantasies = Song.create(name: "Final Fantasies", artist_id: gold_fir.id, length: "3:54", genre_id: elec.id, year: 2019, url: "https://open.spotify.com/track/0cKsGVtXNu4faKlxSy2mFZ?si=kvYyulkpRjC2rVbOOC7OSg")
+high = Song.create(name: "You're So High", artist_id: eli_and_fur.id, length: "5:25", genre_id: elec.id, year: 2018, url: "https://open.spotify.com/track/7J7cNv9fl9nbofKMpPng4J?si=t7xMzL5IQ3abQ_1JH7Z4jA")
+freak = Song.create(name: "FREAK", artist_id: shygirl.id, length: "2:47", genre_id: hip_hop.id, year: 2020, url: "https://open.spotify.com/track/3RvYDpbvZFOwqWhcleKhpH?si=hw9sdan7TK2LHJyVQZJhmw")
+walkin = Song.create(name: "Keep On Walkin'", artist_id: robin_s.id, length: "4:31", genre_id: house.id, year: 1993, url: "https://open.spotify.com/track/5Rg4i5SEzUXAiztaIwG3Qd?si=Y3nOkLjUQpGRBaZjoiVP5Q")
+dynasty = Song.create(name: "Dynasty", artist_id: rina.id, length: "3:08:21", genre_id: indie.id, year: 2020, url: "https://open.spotify.com/track/1TWNKyNQOBfNUkWWs7FooF?si=2mqWE4mJQJGPHtpMRDFemA")
+stuck = Song.create(name: "Stuck On You", artist_id: rac.id, length: "3:12", genre_id: indie.id, year: 2020, url: "https://open.spotify.com/track/7BCFV1bils1XvWp2r7zY0d?si=KIeeCk6PR2eA-ZGCTHUKZA")
+strongboi = Song.create(name: "strongboi", artist_id: strongboi.id, length: "4:30", genre_id: indie.id, year: 2020, url: "https://open.spotify.com/track/5CbX4a6s3B0sBKAVHSNGTo?si=X5b0qqOfSKiWvfDmLQreKQ")
+tree = Song.create(name: "Joshua Tree", artist_id: cautious.id, length: "3:18", genre_id: indie.id, year: 2018, url: "https://open.spotify.com/track/1oJZx6GqvuyzUgPu5OBxlY?si=ek5HXFEhTP-fYTuh6s-U2g")
+whatever = Song.create(name: "Whatever Comes to Mind", artist_id: mor.id, length: "4:09", genre_id: indie.id, year: 2018, url: "https://open.spotify.com/track/0ntyYV99MFp7f7MGZlwYj4?si=4aCTF_XYSkK5egyUdfEapQ")
+diamond = Song.create(name: "Diamond", artist_id: fx.id, length: "3:59", genre_id: k_pop.id, year: 2015, url: "https://open.spotify.com/track/6IAFBoQofnfWJUOkha7DjA?si=llZQF1O9SFiM5vn5blQJNw")
+lucky = Song.create(name: "Lucky", artist_id: charli.id, length: "3:36", genre_id: pc.id, year: 2017, url: "https://open.spotify.com/track/4fSHrm2WrIZmtYMXQq0YwI?si=l5EcyAd_QpmmxEwT3vudEg")
+plastic = Song.create(name: "Plastic Doll", artist_id: gaga.id, length: "3:42:14", genre_id: pop.id, year: 2020, url: "https://open.spotify.com/track/3CidPLqWXqgesJlwYVJZdy?si=wgnO_l4rQUe2uMtJjmJkrA")
+dance = Song.create(name: "Dance, Dance", artist_id: fallout.id, length: "3:00", genre_id: fallout.id, year: 2005, url: "https://open.spotify.com/track/0a7BloCiNzLDD9qSQHh5m7?si=S3AP7OdqRrS0p_zvLHy84g")
+thinkin = Song.create(name: "Thinkin Bout You", artist_id: frank.id, length: "3:21", genre_id: r_b.id, year: 2012, url: "https://open.spotify.com/track/7DfFc7a6Rwfi3YQMRbDMau?si=n2pHDVsVSWSNypmgVzrZ0A")
+bucket = Song.create(name: "Crabs In A Bucket", artist_id: vince.id, length: "3:18", genre_id: rap.id, year: 2017, url: "https://open.spotify.com/track/0RxSL5kjZXO45l38vVerNO?si=XVTC95o4TDWLD3P-k8VWNw")
+devil = Song.create(name: "Dance With The Devil", artist_id: breaking.id, length: "3:47", genre_id: rock.id, year: 2006, url: "https://open.spotify.com/track/10ASBwZsp7oUUDsJEYz3uS?si=8DO4Ozx7RN6AbYH1uKoNRg")
+you = Song.create(name: "You", artist_id: radio.id, length: "3:29", genre_id: house.id, year: 1993, url: "https://open.spotify.com/track/5KZ0qobWEFl892YjIC02SE?si=prJK_6puT_GMhZkQAAqG2g")
+pimp = Song.create(name: "P.I.M.P.", artist_id: cent.id, length: "4:09", genre_id: hip_hop.id, year: 2003, url: "https://open.spotify.com/track/2D1hlMwWWXpkc3CZJ5U351?si=-IphQmEdQeWhJXxqZuV2nQ")
+camo = Song.create(name: "CAMO", artist_id: boa.id, length: "3:19", genre_id: k_pop.id, year: 2018, url: "https://open.spotify.com/track/2zdshfZnGJSvr62uKJhitz?si=NVgbCf_yRjmIKarC65UR0g")
+okay = Song.create(name: "It's Okay To Cry", artist_id: sophie.id, length: "3:51", genre_id: pc.id, year: 2018, url: "https://open.spotify.com/track/7nKiLyUUSbNUwaoMBzBeQO?si=Yz6BfFZCQGy9eXlh6MkTFw")
+firework = Song.create(name: "Firework", artist_id: katy.id, length: "3:48", genre_id: pop.id, year: 2010, url: "https://open.spotify.com/track/4r6eNCsrZnQWJzzvFh4nlg?si=2KkpLVcES52cEHtur0wbbw")
+age = Song.create(name: "What's My Age Again?", artist_id: blink.id, length: "2:28", genre_id: punk.id, year: 1999, url: "https://open.spotify.com/track/4LJhJ6DQS7NwE7UKtvcM52?si=_ihDkFioSQOVU6zec2gI5A")
+drew = Song.create(name: "Drew Barrymore", artist_id: sza.id, length: "3:51", genre_id: r_b.id, year: 2020, url: "https://open.spotify.com/track/06u5LrUpbosQlQ1QJFhPpG?si=g4udJNRdSp6BIIvXgFy4Eg")
+blockbuster = Song.create(name: "Blockbuster Night, Pt 1.", artist_id: jewels.id, length: "2:32", genre_id: rap.id, year: 2014, url: "https://open.spotify.com/track/5jQYkYhoOlBW4vJ2l4TCxl?si=FSkvUHTFT96BcpOBFWiJEA")
+champions = Song.create(name: "We Are The Champions", artist_id: queen.id, length: "3:01", genre_id: rock.id, year: 1981, url: "https://open.spotify.com/track/4kzvAGJirpZ9ethvKZdJtg?si=vUtFU998QXOccQQP-ghU9Q")
+love_or_love = Song.create(name: "Love or Love", artist_id: jewels.id, length: "4:15", genre_id: rap.id, year: 2014, url: "https://open.spotify.com/track/47iKV0KlcvlflSsrCPD3TQ?si=-8OJmm6mQbGa0EcoO-qYKw")
 
 
  puts "💿 💿 💿 💿 Seeded! 💿 💿 💿 💿 "
+
+
