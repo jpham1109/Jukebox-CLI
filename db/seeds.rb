@@ -35,6 +35,16 @@ fallout = Artist.create(name: "Fall Out Boy")
 frank = Artist.create(name: "Frank Ocean")
 vince = Artist.create(name: "Vince Staples")
 breaking = Artist.create(name: "Breaking Benjamin")
+radio = Artist.create(name: "Radiohead")
+cent = Artist.create(name: "50 Cent")
+cece = Artist.create(name: "CeCe Peniston")
+boa = Artist.create(name: "BoA")
+sophie = Artist.create(name: "SOPHIE")
+katy = Artist.create(name: "Katy Perry")
+blink = Artist.create(name: "Blink 182")
+sza = Artist.create(name: "SZA")
+jewels = Artist.create(name: "Run The Jewels")
+queen = Artist.create(name: "Queen")
 
 #genres
 
@@ -74,5 +84,17 @@ sugar = Song.create(name: "Sugar, We’re Goin Down", artist_id: fallout.id, len
 pyramids = Song.create(name: "Pyramids", artist_id: frank.id, length: "9:53", genre_id: r_b.id, year: 2012, url: "https://open.spotify.com/track/4QhWbupniDd44EDtnh2bFJ?si=uWKu5qGsRgyemVBteFXEAQ")
 yeah_right = Song.create(name: "Yeah Right", artist_id: vince.id, length: "3:09", genre_id: rap.id, year: 2017, url: "https://open.spotify.com/track/35tWhD29yvWwB0IDRr6zsL?si=39_nqTGxQU6dPBXONkiQSQ")
 diary = Song.create(name: "Diary of Jane", artist_id: breaking.id, length: "3:21", genre_id: rock.id, year: 2006, url: "https://open.spotify.com/track/5m9uiFH9sK5wxRZdfN62n9?si=etF0r2j8S3CFzhWlhPKk5A")
+creep = Song.create(name: "Creep", artist_id: radio.id, length: "3:59", genre_id: house.id, year: 1993, url: "https://open.spotify.com/track/70LcF31zb1H0PyJoS1Sx1r?si=_ifbLYuHSxKL9anUl3G_Qw")
+our_song = Song.create(name: "Our Song", artist_id: taylor.id, length: "3:21", genre_id: country.id, year: 2008, url: "https://open.spotify.com/track/15DeqWWQB4dcEWzJg15VrN?si=Xgb0myrITTaPuzEt9fNyqQ")
+mia = Song.create(name: "In Da Club", artist_id: cent.id, length: "3:13", genre_id: hip_hop.id, year: 2003, url: "https://open.spotify.com/track/4RY96Asd9IefaL3X4LOLZ8?si=GAdoMlC5QM2-gfa-uAzLTQ")
+finally = Song.create(name: "Finally", artist_id: cece.id, length: "4:05", genre_id: house.id, year: 1991, url: "https://open.spotify.com/track/0uqvSVhGgQTIdj9G51vhvv?si=difFfr7CSwiLa0z8os9WZg")
+shot = Song.create(name: "ONE SHOT, TWO SHOT", artist_id: boa.id, length: "3:31", genre_id: k_pop.id, year: 2018, url: "https://open.spotify.com/track/1OWxlgwPtWuEvGkH8uS1Tj?si=GYIVbNRRS0-5DgE5MD9YlA")
+immaterial = Song.create(name: "Immaterial", artist_id: sophie.id, length: "3:53", genre_id: pc.id, year: 2018, url: "https://open.spotify.com/track/6GoLARmR2OZl2EldehFrsA?si=dxICKymVSAClQDRgn0GSVA")
+dream = Song.create(name: "Teenage Dream", artist_id: katy.id, length: "3:48", genre_id: pop.id, year: 2010, url: "https://open.spotify.com/track/5jzKL4BDMClWqRguW5qZvh?si=muquIYjLSyKo0hUsYKrXeA")
+things = Song.create(name: "All The Small Things", artist_id: blink.id, length: "2:47", genre_id: punk.id, year: 1999, url: "https://open.spotify.com/track/2m1hi0nfMR9vdGC8UcrnwU?si=W1vbbSY3T6ar7b8t2Yl4kw")
+sza = Song.create(name: "Good Days", artist_id: sza.id, length: "4:39", genre_id: r_b.id, year: 2020, url: "https://open.spotify.com/track/3YJJjQPAbDT7mGpX3WtQ9A?si=2QeFVFhUSFGVbBxqUO60PQ")
+count = Song.create(name: "Close Your Eyes (And Count To ****)", artist_id: jewels.id, length: "3:54", genre_id: rap.id, year: 2014, url: "https://open.spotify.com/track/2Kn3xgaDCM4aHuHK7FApgC?si=X_Q6SFLgRya6YUMlJTUWDg")
+rock_you = Song.create(name: "We Will Rock You", artist_id: queen.id, length: "2:02", genre_id: rock.id, year: 1981, url: "https://open.spotify.com/track/54flyrjcdnQdco7300avMJ?si=yvwsXv-2ScGGHL374VGKwQ")
+
 
  puts "💿 💿 💿 💿 Seeded! 💿 💿 💿 💿 "

@@ -2,6 +2,7 @@ class Favorite < ActiveRecord::Base
     belongs_to :user
     belongs_to :song
 
+<<<<<<< HEAD
     def to_s
         self.name 
     end
@@ -15,5 +16,13 @@ class Favorite < ActiveRecord::Base
     # end
 
 
+=======
+    # def to_s
+    #     self.name 
+    # end
+>>>>>>> 8b808a29e656f212b2fe4309de5ffcb2a06e32d4
 
+    # def self.all_favorites
+    #     self.all.map{|song| song.song_id}  
+    # end
 end
