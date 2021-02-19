@@ -107,6 +107,7 @@ class Jukebox
   end 
 
   def songs_by_genre(chosen_genre)
+    system 'clear'
     songs_by_genre = Song.all.where(genre_id: chosen_genre)
     songs = songs_by_genre.map{|song| {song.name => song.id}}
     chosen_song = prompt.select("Which song would you like?", songs)
@@ -133,6 +134,7 @@ class Jukebox
   end 
 
   def songs_by_artist(chosen_artist)
+    system 'clear'
     songs_by_artist = Song.all.where(artist_id: chosen_artist)
     songs = songs_by_artist.map{|song| {song.name => song.id}}
     chosen_song = prompt.select("Which song would you like?", songs)
@@ -182,6 +184,7 @@ class Jukebox
     else
     Favorite.create(user_id: user_id, song_id: song_id)
     puts "Added to favorites!"
+    end
       sleep(1)
       favorites_helper(user)
   end 
@@ -189,31 +192,32 @@ class Jukebox
   def favorites_helper(user)
     system 'clear'
     user_favorites = Favorite.where(user_id: user.id)
-    user_favorites.map{|favorite| {favorite.song.name => favorite.id}}
+    fav_songs = user_favorites.map{|fav| fav.song.name}
+    # fav_songs = user_favorites.map{|favorite| {favorite.song.name => favorite.id}}
     puts "Here are your favorites:"
-    puts user_favorites.map{|favorite| {favorite.song.name => favorite.id}}
-    # binding.pry
+    puts fav_songs
     prompt.select("Choose an option") do |menu|
-      menu.choice "Remove a song", -> {remove_a_favorite(user, favorites )}
-      menu.choice "Delete all favorite", -> {delete_all_favorites(user, favorites)}
-      menu.choice "Go back", -> {main_menu_welcome_back}
+      menu.choice "Remove a song", -> {remove_a_favorite(fav_songs, user_favorites )}
+      menu.choice "Delete all favorite", -> {delete_all_favorites(user_favorites)}
+      menu.choice "All songs", -> {songs_helper}
+      menu.choice "Main menu", -> {main_menu_welcome_back}
       menu.choice "Exit", -> {exit_helper}
     end
   end 
 
-  def remove_a_favorite(user, favorites)
+  def remove_a_favorite(fav_songs, user_favorites)
     system 'clear'
-    chosen_favorite = prompt.select("Select a song to remove from favorites", favorites)
-    favorites.delete(chosen_favorite)
-    favorites.reload
-    puts "Now you're favorites are #{favorites}"
+    chosen_favorite = prompt.select("Select a song to remove from favorites", fav_songs)
+    delete = user_favorites.find{|favorite| favorite.song.name == chosen_favorite}
+    delete.destroy
+    fav_songs.delete(chosen_favorite)
+    puts "Now you're favorites are #{fav_songs}"
     favorites_helper(user)
   end
 
-  def delete_all_favorites(user, favorites)
+  def delete_all_favorites(user_favorites)
     system 'clear'
-    favorites.clear
-    favorites_helper(user)
+    user_favorites.destroy_all
   end 
 
   def delete_user
