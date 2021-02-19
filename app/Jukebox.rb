@@ -9,6 +9,10 @@ class Jukebox
   def run
       welcome
   end
+
+  def jukebox_music 
+    pid = fork{exec 'afplay', "jukebox_song.mp3"}
+  end
   
   def welcome
     system 'clear'
@@ -16,6 +20,7 @@ class Jukebox
     sleep(1)
     puts "Welcome to...".colorize(:magenta)
     sleep(1)
+    jukebox_music
     banner
     sleep(1)
     prompt.select("Sign in or Sign up") do |menu|
