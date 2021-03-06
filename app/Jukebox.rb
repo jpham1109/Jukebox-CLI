@@ -227,6 +227,7 @@ class Jukebox
   def delete_all_favorites(user_favorites)
     system 'clear'
     user_favorites.destroy_all
+    favorites_helper(user)
   end 
 
   def change_password
